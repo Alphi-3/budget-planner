@@ -27,135 +27,67 @@
   --muted2:    #3a3c34;
 }
 
-/* ── RESET ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Geist Mono', monospace;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   min-height: 100vh;
-  padding-bottom: 72px;
+  padding-bottom: 80px;
 }
 
 body::before {
   content: '';
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 180px;
-  pointer-events: none;
-  z-index: 0;
+  background-size: 180px; pointer-events: none; z-index: 0;
 }
 
-.page {
-  position: relative;
-  z-index: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 28px 24px 48px;
-}
+.page { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 28px 24px 48px; }
 
 /* ── HEADER ───────────────────────────────────────────── */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 18px;
-  margin-bottom: 0;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-bottom: 18px; flex-wrap: wrap; gap: 12px;
 }
-
 .h-left { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 
-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.5px;
-}
-
+h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; line-height: 1; letter-spacing: -0.5px; }
 h1 em { font-style: italic; color: var(--accent); font-weight: 600; }
 
-.h-sub {
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+.h-sub { font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
 
 .salary-area { text-align: right; }
-.salary-area .s-label {
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 2px;
-}
-.salary-area .s-input-wrap {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  justify-content: flex-end;
-}
-.salary-area .s-cur { font-size: 12px; color: var(--muted); }
+.salary-area .s-label { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.salary-area .s-input-wrap { display: flex; align-items: baseline; gap: 4px; justify-content: flex-end; }
+.salary-area .s-cur { font-size: 13px; color: var(--muted); }
 
 #salary-input {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 30px;
-  font-weight: 600;
-  color: var(--accent);
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  outline: none;
-  width: 120px;
-  text-align: right;
-  line-height: 1;
-  transition: border-color 0.2s;
+  font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600;
+  color: var(--accent); background: none; border: none; border-bottom: 1px solid transparent;
+  outline: none; width: 120px; text-align: right; line-height: 1; transition: border-color 0.2s;
 }
 #salary-input:hover, #salary-input:focus { border-bottom-color: var(--accent-d); }
 
 /* ── NAV TABS ─────────────────────────────────────────── */
-.nav-tabs {
-  display: flex;
-  gap: 2px;
-  margin-top: 20px;
-  border-bottom: 1px solid var(--border);
-}
+.nav-tabs { display: flex; gap: 2px; margin-top: 20px; border-bottom: 1px solid var(--border); }
 
 .nav-tab {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: var(--muted);
-  padding: 8px 16px 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-bottom: -1px;
+  font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  color: var(--muted); padding: 9px 18px 11px; cursor: pointer; transition: all 0.2s; margin-bottom: -1px;
 }
-
 .nav-tab:hover { color: var(--text); }
 .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-/* ── TAB PANELS ───────────────────────────────────────── */
 .tab-panel { display: none; padding-top: 24px; }
 .tab-panel.active { display: block; }
 
 /* ── GRID ─────────────────────────────────────────────── */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .col-full { grid-column: 1 / -1; }
 
 @media (max-width: 660px) {
@@ -166,58 +98,32 @@ h1 em { font-style: italic; color: var(--accent); font-weight: 600; }
 }
 
 /* ── CARD ─────────────────────────────────────────────── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-}
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 
 .card-hd {
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+  padding: 12px 16px; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
 }
-
-.card-hd-title {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.card-hd-total { font-size: 12px; font-weight: 500; }
+.card-hd-title { font-size: 10px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+.card-hd-total { font-size: 13px; font-weight: 500; }
 
 /* ── LINE ITEMS ───────────────────────────────────────── */
 .li {
-  display: flex;
-  align-items: center;
-  padding: 9px 16px;
-  border-bottom: 1px solid var(--border);
-  gap: 9px;
-  transition: background 0.12s;
+  display: flex; align-items: center; padding: 10px 16px;
+  border-bottom: 1px solid var(--border); gap: 10px; transition: background 0.12s;
 }
 .li:last-child { border-bottom: none; }
 .li:hover { background: rgba(255,255,255,0.015); }
 
-.li-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-.li-label { flex: 1; font-size: 12px; color: var(--text); }
-.li-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.li-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.li-label { flex: 1; font-size: 13px; color: var(--text); }
+.li-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
 .tag {
-  font-size: 9px;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 3px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 3px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
 }
-
-.li-amt { font-size: 12px; font-weight: 500; white-space: nowrap; min-width: 56px; text-align: right; }
+.li-amt { font-size: 13px; font-weight: 500; white-space: nowrap; min-width: 60px; text-align: right; }
 
 /* colours */
 .cr { color: var(--red); }    .cg { color: var(--accent); }
@@ -232,513 +138,282 @@ h1 em { font-style: italic; color: var(--accent); font-weight: 600; }
 
 /* ── EDITABLE BUDGET ROWS ─────────────────────────────── */
 .li-edit-name {
-  font-family: 'Geist Mono', monospace;
-  font-size: 12px;
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  color: var(--text);
-  outline: none;
-  flex: 1;
-  min-width: 80px;
-  transition: border-color 0.2s;
+  font-family: 'Geist Mono', monospace; font-size: 13px; background: none; border: none;
+  border-bottom: 1px solid transparent; color: var(--text); outline: none; flex: 1; min-width: 80px; transition: border-color 0.2s;
 }
 .li-edit-name:hover, .li-edit-name:focus { border-bottom-color: var(--border2); }
 
 .li-edit-amt {
-  font-family: 'Geist Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  color: var(--amber);
-  outline: none;
-  width: 64px;
-  text-align: right;
-  transition: border-color 0.2s;
+  font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500; background: none; border: none;
+  border-bottom: 1px solid transparent; color: var(--amber); outline: none; width: 72px; text-align: right; transition: border-color 0.2s;
+  /* hide spinners */
+  -moz-appearance: textfield;
 }
+.li-edit-amt::-webkit-outer-spin-button,
+.li-edit-amt::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .li-edit-amt:hover, .li-edit-amt:focus { border-bottom-color: var(--amber); }
 
+/* delete button — higher contrast, larger hit area */
 .del-btn {
-  background: none;
-  border: none;
-  color: var(--muted2);
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  padding: 0 2px;
-  transition: color 0.15s;
-  flex-shrink: 0;
+  background: none; border: 1px solid var(--border2); color: var(--muted);
+  cursor: pointer; font-size: 15px; line-height: 1; padding: 3px 7px;
+  border-radius: 4px; transition: all 0.15s; flex-shrink: 0;
 }
-.del-btn:hover { color: var(--red); }
+.del-btn:hover { color: var(--red); border-color: var(--red); background: var(--red-bg); }
 
-.add-row {
-  padding: 8px 16px;
-  border-top: 1px solid var(--border);
-}
+.add-row { padding: 9px 16px; border-top: 1px solid var(--border); }
 
 .add-btn {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: none;
-  border: 1px solid var(--border2);
-  color: var(--muted);
-  padding: 4px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.15s;
+  font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: none; border: 1px solid var(--border2); color: var(--muted); padding: 5px 12px; border-radius: 5px; cursor: pointer; transition: all 0.15s;
 }
 .add-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ── SUMMARY ──────────────────────────────────────────── */
-.sum-row {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  border-bottom: 1px solid var(--border);
-}
+.sum-row { display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--border); }
 @media (max-width: 660px) { .sum-row { grid-template-columns: 1fr 1fr; } }
-
 .sum-cell { padding: 16px; border-right: 1px solid var(--border); }
 .sum-cell:last-child { border-right: none; }
-.sum-lbl { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.sum-lbl { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
 .sum-val { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; line-height: 1; }
 
 /* ── ALLOC BAR ────────────────────────────────────────── */
 .bar-wrap { padding: 14px 16px 16px; }
-.bar { height: 4px; border-radius: 2px; background: var(--border); display: flex; overflow: hidden; margin-bottom: 10px; }
+.bar { height: 5px; border-radius: 3px; background: var(--border); display: flex; overflow: hidden; margin-bottom: 10px; }
 .bar-seg { height: 100%; transition: width 0.4s ease; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-.leg-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); }
-.leg-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.leg-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+.leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 
 /* ── REMAINING ────────────────────────────────────────── */
-.remaining {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 16px;
-  border-top: 1px solid var(--border2);
-  gap: 12px;
-}
-.r-lbl { font-family: 'Cormorant Garamond', serif; font-size: 18px; }
-.r-sub { font-size: 10px; color: var(--muted); margin-top: 3px; }
-.r-amt { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; line-height: 1; text-align: right; }
-.r-sub2 { font-size: 10px; color: var(--muted); text-align: right; margin-top: 3px; }
+.remaining { display: flex; justify-content: space-between; align-items: center; padding: 20px 16px; border-top: 1px solid var(--border2); gap: 12px; }
+.r-lbl { font-family: 'Cormorant Garamond', serif; font-size: 19px; }
+.r-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+.r-amt { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 600; line-height: 1; text-align: right; }
+.r-sub2 { font-size: 11px; color: var(--muted); text-align: right; margin-top: 3px; }
 
 /* ── TOGGLE ───────────────────────────────────────────── */
-.tog-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 16px; border-bottom: 1px solid var(--border);
-  gap: 10px; flex-wrap: wrap;
-}
-.tog-lbl { font-size: 12px; }
-.tog-sub { font-size: 10px; color: var(--muted); margin-top: 2px; }
-.tog-ctl { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
-.tog-ctl span { font-size: 10px; color: var(--muted); }
+.tog-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); gap: 10px; flex-wrap: wrap; }
+.tog-lbl { font-size: 13px; }
+.tog-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.tog-ctl { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.tog-ctl span { font-size: 11px; color: var(--muted); }
 .tog-ctl input[type="number"] {
-  width: 64px; background: var(--bg); border: 1px solid var(--border2);
-  border-radius: 4px; padding: 4px 7px; font-family: 'Geist Mono', monospace;
-  font-size: 12px; color: var(--text); text-align: right;
+  width: 68px; background: var(--bg); border: 1px solid var(--border2); border-radius: 4px;
+  padding: 5px 8px; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--text); text-align: right;
+  -moz-appearance: textfield;
 }
+.tog-ctl input[type="number"]::-webkit-outer-spin-button,
+.tog-ctl input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .tog-ctl input:focus { outline: none; border-color: var(--accent); }
-.sw { position: relative; display: inline-block; width: 34px; height: 18px; }
+.sw { position: relative; display: inline-block; width: 36px; height: 20px; }
 .sw input { opacity: 0; width: 0; height: 0; }
-.sw-track { position: absolute; cursor: pointer; inset: 0; background: var(--border2); border-radius: 18px; transition: .25s; }
-.sw-track:before { content: ''; position: absolute; width: 12px; height: 12px; left: 3px; bottom: 3px; background: var(--muted); border-radius: 50%; transition: .25s; }
+.sw-track { position: absolute; cursor: pointer; inset: 0; background: var(--border2); border-radius: 20px; transition: .25s; }
+.sw-track:before { content: ''; position: absolute; width: 14px; height: 14px; left: 3px; bottom: 3px; background: var(--muted); border-radius: 50%; transition: .25s; }
 input:checked + .sw-track { background: var(--accent); }
 input:checked + .sw-track:before { background: var(--bg); transform: translateX(16px); }
 
 /* ── MARKET ───────────────────────────────────────────── */
 .mkt-area { padding: 14px 16px; }
 .mkt-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.mkt-topbar-lbl { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.mkt-topbar-lbl { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
 .refresh-btn {
-  font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-  background: none; border: 1px solid var(--border2); color: var(--muted); padding: 3px 9px; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+  font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: none; border: 1px solid var(--border2); color: var(--muted); padding: 4px 10px; border-radius: 4px; cursor: pointer; transition: all 0.2s;
 }
 .refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
 .refresh-btn.loading { opacity: 0.4; pointer-events: none; }
-.mkt-tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+.mkt-tabs { display: flex; gap: 5px; margin-bottom: 12px; }
 .mkt-tab {
-  font-family: 'Geist Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
-  background: none; border: 1px solid var(--border); color: var(--muted); padding: 4px 10px; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+  font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: none; border: 1px solid var(--border); color: var(--muted); padding: 5px 12px; border-radius: 4px; cursor: pointer; transition: all 0.2s;
 }
 .mkt-tab.active { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
 .mkt-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
 @media (max-width: 660px) { .mkt-grid { grid-template-columns: 1fr 1fr; } }
-.mkt-tile { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 13px; cursor: pointer; transition: all 0.18s; }
+.mkt-tile { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 13px 14px; cursor: pointer; transition: all 0.18s; }
 .mkt-tile:hover { border-color: var(--border2); }
 .mkt-tile.selected { border-color: var(--accent); background: var(--accent-bg); }
-.t-ticker { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; line-height: 1; margin-bottom: 2px; }
-.t-name { font-size: 9px; color: var(--muted); margin-bottom: 10px; line-height: 1.4; }
-.t-price { font-size: 13px; font-weight: 500; min-height: 18px; }
-.t-change { font-size: 10px; margin-top: 2px; min-height: 14px; }
-.t-meta { font-size: 9px; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.t-ticker { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; line-height: 1; margin-bottom: 2px; }
+.t-name { font-size: 10px; color: var(--muted); margin-bottom: 10px; line-height: 1.4; }
+.t-price { font-size: 14px; font-weight: 500; min-height: 20px; }
+.t-change { font-size: 11px; margin-top: 2px; min-height: 16px; }
+.t-meta { font-size: 10px; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
 .pos { color: var(--accent); } .neg { color: var(--red); } .neu { color: var(--muted); }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-.shimmer { display: inline-block; width: 60%; height: 11px; border-radius: 3px; background: linear-gradient(90deg, var(--border) 25%, var(--border2) 50%, var(--border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
-.verdict { margin-top: 10px; padding: 12px 14px; border: 1px solid rgba(184,224,74,0.15); border-radius: 8px; background: var(--accent-bg); font-size: 11px; line-height: 1.8; display: none; }
+.shimmer { display: inline-block; width: 60%; height: 12px; border-radius: 3px; background: linear-gradient(90deg, var(--border) 25%, var(--border2) 50%, var(--border) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+.verdict { margin-top: 10px; padding: 13px 15px; border: 1px solid rgba(184,224,74,0.15); border-radius: 8px; background: var(--accent-bg); font-size: 12px; line-height: 1.8; display: none; }
 .verdict.visible { display: block; }
 .verdict strong { color: var(--accent); }
-.v-tag { display: inline-block; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; margin-bottom: 6px; }
+.v-tag { display: inline-block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; margin-bottom: 6px; }
 .v-etf   { background: rgba(184,224,74,0.1); color: var(--accent); border: 1px solid rgba(184,224,74,0.22); }
 .v-stock { background: rgba(122,184,232,0.1); color: var(--blue);   border: 1px solid rgba(122,184,232,0.22); }
-.last-upd { font-size: 9px; color: var(--muted2); margin-top: 10px; text-align: right; }
+.last-upd { font-size: 10px; color: var(--muted2); margin-top: 10px; text-align: right; }
 
-/* ── IOU ──────────────────────────────────────────────── */
-.iou-layout {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 14px;
-  align-items: start;
-}
+/* ── IOU LAYOUT ───────────────────────────────────────── */
+.iou-layout { display: grid; grid-template-columns: 1fr 340px; gap: 16px; align-items: start; }
+@media (max-width: 820px) { .iou-layout { grid-template-columns: 1fr; } }
 
-@media (max-width: 800px) { .iou-layout { grid-template-columns: 1fr; } }
+/* ── IOU GROUP ────────────────────────────────────────── */
+.iou-groups-wrap { display: flex; flex-direction: column; gap: 12px; }
 
-/* group block */
 .iou-group {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 12px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
 }
-
-.iou-group:last-child { margin-bottom: 0; }
 
 .iou-group-hd {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 14px;
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+  background: var(--surface2); border-bottom: 1px solid var(--border);
 }
 
 .iou-group-name {
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  color: var(--text);
-  outline: none;
-  flex: 1;
-  transition: border-color 0.2s;
+  font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500;
+  background: none; border: none; border-bottom: 1px solid transparent;
+  color: var(--text); outline: none; flex: 1; transition: border-color 0.2s;
 }
 .iou-group-name:hover, .iou-group-name:focus { border-bottom-color: var(--border2); }
 
-.iou-group-total {
-  font-size: 11px;
-  color: var(--muted);
-  white-space: nowrap;
-}
+.iou-group-total { font-size: 12px; color: var(--muted); white-space: nowrap; }
 
+/* group delete — clearly visible */
 .iou-group-del {
-  background: none; border: none; color: var(--muted2); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 2px; transition: color 0.15s;
+  background: none; border: 1px solid var(--border2); color: var(--muted);
+  cursor: pointer; font-size: 15px; line-height: 1; padding: 3px 8px;
+  border-radius: 4px; transition: all 0.15s; flex-shrink: 0;
 }
-.iou-group-del:hover { color: var(--red); }
+.iou-group-del:hover { color: var(--red); border-color: var(--red); background: var(--red-bg); }
 
-/* expense row */
+/* column headers */
+.iou-col-hd {
+  display: grid;
+  grid-template-columns: 1fr 90px 120px 90px 40px;
+  gap: 8px; padding: 7px 14px; border-bottom: 1px solid var(--border);
+}
+.iou-col-hd span { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+/* expense row — NO re-render, uses event delegation */
 .iou-row {
   display: grid;
-  grid-template-columns: 1fr 80px 110px 56px 24px;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-bottom: 1px solid var(--border);
+  grid-template-columns: 1fr 90px 120px 90px 40px;
+  align-items: center; gap: 8px; padding: 9px 14px;
+  border-bottom: 1px solid var(--border); transition: background 0.12s;
 }
 .iou-row:last-child { border-bottom: none; }
 .iou-row:hover { background: rgba(255,255,255,0.012); }
 
-@media (max-width: 520px) {
-  .iou-row { grid-template-columns: 1fr 70px 90px 48px 20px; gap: 5px; padding: 8px 10px; }
+@media (max-width: 580px) {
+  .iou-col-hd, .iou-row { grid-template-columns: 1fr 80px 100px 80px 36px; gap: 5px; padding: 8px 10px; }
 }
 
-.iou-col-hd {
-  display: grid;
-  grid-template-columns: 1fr 80px 110px 56px 24px;
-  gap: 8px;
-  padding: 6px 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-@media (max-width: 520px) { .iou-col-hd { grid-template-columns: 1fr 70px 90px 48px 20px; gap: 5px; padding: 6px 10px; } }
-
-.iou-col-hd span {
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
+/* IOU inputs — no spinners */
 .iou-input {
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  background: none;
-  border: none;
-  border-bottom: 1px solid transparent;
-  color: var(--text);
-  outline: none;
-  width: 100%;
-  transition: border-color 0.2s;
+  font-family: 'Geist Mono', monospace; font-size: 12px; background: none; border: none;
+  border-bottom: 1px solid transparent; color: var(--text); outline: none; width: 100%; transition: border-color 0.2s;
 }
 .iou-input:hover, .iou-input:focus { border-bottom-color: var(--border2); }
-
-.iou-input.amt {
-  color: var(--amber);
-  text-align: right;
-}
+.iou-input.amt { color: var(--amber); text-align: right; -moz-appearance: textfield; }
+.iou-input.amt::-webkit-outer-spin-button,
+.iou-input.amt::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .iou-input.amt:focus { border-bottom-color: var(--amber); }
 
-.iou-split-select {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 4px;
-  padding: 2px 4px;
-  outline: none;
-  cursor: pointer;
-  width: 100%;
-  transition: border-color 0.2s;
+/* dropdowns — wider, full name visible */
+.iou-select {
+  font-family: 'Geist Mono', monospace; font-size: 11px;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text); border-radius: 5px; padding: 4px 6px;
+  outline: none; cursor: pointer; width: 100%; transition: border-color 0.2s;
+  /* ensure text doesn't clip */
+  overflow: visible;
 }
-.iou-split-select:focus { border-color: var(--accent); }
+.iou-select:focus { border-color: var(--accent); }
 
-.iou-owed {
-  font-size: 11px;
-  font-weight: 500;
-  text-align: right;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
+/* row delete button */
 .iou-row-del {
-  background: none; border: none; color: var(--muted2); cursor: pointer; font-size: 14px; line-height: 1; padding: 0; transition: color 0.15s; justify-self: center;
+  background: none; border: 1px solid var(--border2); color: var(--muted);
+  cursor: pointer; font-size: 14px; line-height: 1; padding: 3px 7px;
+  border-radius: 4px; transition: all 0.15s; justify-self: center; white-space: nowrap;
 }
-.iou-row-del:hover { color: var(--red); }
+.iou-row-del:hover { color: var(--red); border-color: var(--red); background: var(--red-bg); }
 
-.iou-add-row {
-  padding: 7px 14px;
-  border-top: 1px solid var(--border);
-}
+.iou-add-row { padding: 8px 14px; border-top: 1px solid var(--border); }
 
-/* sidebar */
-.iou-sidebar { position: sticky; top: 24px; }
-
-.iou-balance-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 12px;
+/* ── IOU SECTION SEPARATOR ────────────────────────────── */
+.iou-section-label {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); padding: 0 0 8px 0; margin-top: 8px;
+  border-bottom: 1px solid var(--border); margin-bottom: 12px;
 }
 
-.iou-balance-hd {
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+/* ── IOU SIDEBAR ──────────────────────────────────────── */
+.iou-sidebar { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 12px; }
 
+.iou-balance-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.iou-balance-hd { padding: 11px 16px; border-bottom: 1px solid var(--border); font-size: 10px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
 .iou-balance-body { padding: 20px 16px; }
 
-.iou-verdict {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
-.iou-verdict strong {
-  font-size: 36px;
-  font-weight: 600;
-  display: block;
-  line-height: 1.1;
-  margin-top: 4px;
-}
+.iou-verdict { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+.iou-verdict strong { font-size: 38px; font-weight: 600; display: block; line-height: 1.1; margin-top: 4px; }
 
 .iou-breakdown { margin-top: 14px; }
-
-.iou-bk-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 11px;
-  color: var(--muted);
-}
+.iou-bk-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--muted); }
 .iou-bk-row:last-child { border-bottom: none; }
 .iou-bk-row span:last-child { color: var(--text); font-weight: 500; }
 
-/* session actions */
+/* session action buttons */
 .iou-actions { display: flex; flex-direction: column; gap: 8px; }
 
 .iou-action-btn {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-radius: 6px;
-  padding: 10px 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: 1px solid var(--border2);
-  background: none;
-  color: var(--muted);
-  text-align: left;
+  font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  border-radius: 7px; padding: 11px 16px; cursor: pointer; transition: all 0.2s;
+  border: 1px solid var(--border2); background: none; color: var(--muted); text-align: left;
 }
 .iou-action-btn:hover { color: var(--text); border-color: var(--text); }
-
-.iou-action-btn.primary {
-  background: var(--accent-bg);
-  border-color: rgba(184,224,74,0.3);
-  color: var(--accent);
-}
+.iou-action-btn.primary { background: var(--accent-bg); border-color: rgba(184,224,74,0.3); color: var(--accent); }
 .iou-action-btn.primary:hover { background: rgba(184,224,74,0.1); }
 
-.iou-action-btn.danger { }
-.iou-action-btn.danger:hover { border-color: var(--red); color: var(--red); }
-
-/* history */
-.iou-history-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 14px;
-}
-
-.iou-hist-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
-  gap: 10px;
-  cursor: pointer;
-  transition: background 0.12s;
-}
+/* ── IOU HISTORY ──────────────────────────────────────── */
+.iou-history-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.iou-hist-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--border); gap: 10px; }
 .iou-hist-row:last-child { border-bottom: none; }
-.iou-hist-row:hover { background: rgba(255,255,255,0.02); }
+.iou-hist-date { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.iou-hist-desc { font-size: 12px; flex: 1; color: var(--muted); }
+.iou-hist-amt  { font-size: 13px; font-weight: 500; white-space: nowrap; }
 
-.iou-hist-date { font-size: 10px; color: var(--muted); }
-.iou-hist-desc { font-size: 11px; flex: 1; }
-.iou-hist-amt  { font-size: 12px; font-weight: 500; }
-
-.empty-state {
-  padding: 28px 16px;
-  text-align: center;
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.8;
-}
+.empty-state { padding: 28px 16px; text-align: center; font-size: 12px; color: var(--muted); line-height: 1.9; }
 
 /* ── FOOTER ───────────────────────────────────────────── */
-footer {
-  margin-top: 32px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  font-size: 10px;
-  color: var(--muted);
-  line-height: 1.7;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); line-height: 1.7; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
 
 /* ── STICKY BAR ───────────────────────────────────────── */
 #sticky-bar {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 200;
-  background: rgba(10,11,9,0.94);
-  border-top: 1px solid var(--border2);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 24px;
-  gap: 12px;
-  transform: translateY(100%);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(10,11,9,0.94); border-top: 1px solid var(--border2);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 24px; gap: 12px;
+  transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 #sticky-bar.show { transform: translateY(0); }
-#sticky-bar .sb-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-#sticky-bar .sb-amt { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; line-height: 1; }
+#sticky-bar .sb-label { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); }
+#sticky-bar .sb-amt { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; line-height: 1; }
 #sticky-bar .sb-right { text-align: right; }
-#sticky-bar .sb-sub { font-size: 10px; color: var(--muted); margin-top: 1px; }
+#sticky-bar .sb-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
 /* ── MODAL ─────────────────────────────────────────────── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 400;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(4px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px;
+  background: rgba(0,0,0,0.72); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
   opacity: 0; pointer-events: none; transition: opacity 0.2s;
 }
 .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-.modal {
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 12px;
-  padding: 24px;
-  max-width: 480px;
-  width: 100%;
-}
-
-.modal h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 400;
-  margin-bottom: 6px;
-}
+.modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 12px; padding: 26px; max-width: 480px; width: 100%; }
+.modal h2 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 7px; }
 .modal h2 em { color: var(--accent); font-style: italic; }
-
-.modal-sub { font-size: 11px; color: var(--muted); margin-bottom: 20px; line-height: 1.7; }
-
-.modal-export {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 14px;
-  font-size: 10px;
-  line-height: 2;
-  color: var(--text);
-  margin-bottom: 18px;
-  white-space: pre-wrap;
-  max-height: 240px;
-  overflow-y: auto;
-}
-
+.modal-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; line-height: 1.7; }
+.modal-export { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px; font-size: 11px; line-height: 2; color: var(--text); margin-bottom: 18px; white-space: pre-wrap; max-height: 260px; overflow-y: auto; }
 .modal-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.modal-btn {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-radius: 6px;
-  padding: 8px 14px;
-  cursor: pointer;
-  border: 1px solid var(--border2);
-  background: none;
-  color: var(--muted);
-  transition: all 0.2s;
-}
+.modal-btn { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 6px; padding: 9px 14px; cursor: pointer; border: 1px solid var(--border2); background: none; color: var(--muted); transition: all 0.2s; }
 .modal-btn:hover { color: var(--text); border-color: var(--text); }
 .modal-btn.confirm { background: var(--red-bg); border-color: rgba(232,96,74,0.3); color: var(--red); }
 .modal-btn.confirm:hover { background: rgba(232,96,74,0.12); }
@@ -755,15 +430,15 @@ footer {
   </div>
 </div>
 
-<!-- EXPORT/WIPE MODAL -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal">
     <h2>Close <em>session.</em></h2>
-    <p class="modal-sub">Copy or save the summary below, then wipe the current session. This will be saved to history automatically.</p>
+    <p class="modal-sub">Copy or save the summary below, then wipe the current session. It will be saved to history automatically.</p>
     <div class="modal-export" id="modal-export-text"></div>
     <div class="modal-actions">
       <button class="modal-btn" onclick="copyExport()">Copy text</button>
-      <button class="modal-btn confirm" onclick="confirmWipe()">Save to history &amp; wipe</button>
+      <button class="modal-btn confirm" onclick="confirmWipe()">Save &amp; wipe</button>
       <button class="modal-btn" onclick="closeModal()">Cancel</button>
     </div>
   </div>
@@ -771,7 +446,6 @@ footer {
 
 <div class="page">
 
-<!-- HEADER -->
 <header>
   <div class="h-left">
     <h1>Monthly <em>Budget.</em></h1>
@@ -786,19 +460,15 @@ footer {
   </div>
 </header>
 
-<!-- NAV TABS -->
 <nav class="nav-tabs">
   <button class="nav-tab active" onclick="switchMainTab(this,'budget')">Budget</button>
   <button class="nav-tab" onclick="switchMainTab(this,'iou')">IOU Tracker</button>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════ -->
-<!-- BUDGET TAB                                            -->
-<!-- ══════════════════════════════════════════════════════ -->
+<!-- ══════════ BUDGET TAB ══════════ -->
 <div class="tab-panel active" id="panel-budget">
 <div class="grid">
 
-  <!-- FIXED -->
   <div class="card">
     <div class="card-hd">
       <span class="card-hd-title">Fixed Obligations</span>
@@ -808,7 +478,6 @@ footer {
     <div class="add-row"><button class="add-btn" onclick="addRow('fixed')">+ Add item</button></div>
   </div>
 
-  <!-- SUBS -->
   <div class="card">
     <div class="card-hd">
       <span class="card-hd-title">Subscriptions &amp; Instalments</span>
@@ -818,7 +487,6 @@ footer {
     <div class="add-row"><button class="add-btn" onclick="addRow('subs')">+ Add item</button></div>
   </div>
 
-  <!-- INVESTMENTS -->
   <div class="card col-full">
     <div class="card-hd">
       <span class="card-hd-title">Investments — Syfe Brokerage</span>
@@ -847,50 +515,50 @@ footer {
       <div class="mkt-grid" id="tab-etf">
         <div class="mkt-tile" data-ticker="CSPX" data-type="etf" onclick="pick(this)">
           <div class="t-ticker">CSPX</div><div class="t-name">iShares S&amp;P 500 UCITS · LSE</div>
-          <div class="t-price" id="p-CSPX"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-CSPX"></div><div class="t-meta">TER 0.07% · WHT 15%</div>
+          <div class="t-price" id="p-CSPX"><span class="shimmer"></span></div><div class="t-change" id="c-CSPX"></div>
+          <div class="t-meta">TER 0.07% · WHT 15%</div>
         </div>
         <div class="mkt-tile" data-ticker="QQQM" data-type="etf" onclick="pick(this)">
           <div class="t-ticker">QQQM</div><div class="t-name">Invesco Nasdaq-100 · US-listed</div>
-          <div class="t-price" id="p-QQQM"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-QQQM"></div><div class="t-meta">TER 0.15% · WHT 30%</div>
+          <div class="t-price" id="p-QQQM"><span class="shimmer"></span></div><div class="t-change" id="c-QQQM"></div>
+          <div class="t-meta">TER 0.15% · WHT 30%</div>
         </div>
         <div class="mkt-tile" data-ticker="VOO" data-type="etf" onclick="pick(this)">
           <div class="t-ticker">VOO</div><div class="t-name">Vanguard S&amp;P 500 · US-listed</div>
-          <div class="t-price" id="p-VOO"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-VOO"></div><div class="t-meta">TER 0.03% · WHT 30%</div>
+          <div class="t-price" id="p-VOO"><span class="shimmer"></span></div><div class="t-change" id="c-VOO"></div>
+          <div class="t-meta">TER 0.03% · WHT 30%</div>
         </div>
       </div>
       <div class="mkt-grid" id="tab-stocks" style="display:none">
         <div class="mkt-tile" data-ticker="NVDA" data-type="stock" onclick="pick(this)">
           <div class="t-ticker">NVDA</div><div class="t-name">Nvidia · AI chips</div>
-          <div class="t-price" id="p-NVDA"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-NVDA"></div><div class="t-meta">High growth · high volatility</div>
+          <div class="t-price" id="p-NVDA"><span class="shimmer"></span></div><div class="t-change" id="c-NVDA"></div>
+          <div class="t-meta">High growth · high volatility</div>
         </div>
         <div class="mkt-tile" data-ticker="AAPL" data-type="stock" onclick="pick(this)">
           <div class="t-ticker">AAPL</div><div class="t-name">Apple · consumer tech</div>
-          <div class="t-price" id="p-AAPL"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-AAPL"></div><div class="t-meta">Stable compounder</div>
+          <div class="t-price" id="p-AAPL"><span class="shimmer"></span></div><div class="t-change" id="c-AAPL"></div>
+          <div class="t-meta">Stable compounder</div>
         </div>
         <div class="mkt-tile" data-ticker="MSFT" data-type="stock" onclick="pick(this)">
           <div class="t-ticker">MSFT</div><div class="t-name">Microsoft · cloud + AI</div>
-          <div class="t-price" id="p-MSFT"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-MSFT"></div><div class="t-meta">Defensive growth</div>
+          <div class="t-price" id="p-MSFT"><span class="shimmer"></span></div><div class="t-change" id="c-MSFT"></div>
+          <div class="t-meta">Defensive growth</div>
         </div>
         <div class="mkt-tile" data-ticker="TSLA" data-type="stock" onclick="pick(this)">
           <div class="t-ticker">TSLA</div><div class="t-name">Tesla · EV + robotics</div>
-          <div class="t-price" id="p-TSLA"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-TSLA"></div><div class="t-meta">Speculative · high volatility</div>
+          <div class="t-price" id="p-TSLA"><span class="shimmer"></span></div><div class="t-change" id="c-TSLA"></div>
+          <div class="t-meta">Speculative · high volatility</div>
         </div>
         <div class="mkt-tile" data-ticker="BRK-B" data-type="stock" onclick="pick(this)">
           <div class="t-ticker">BRK.B</div><div class="t-name">Berkshire B · diversified value</div>
-          <div class="t-price" id="p-BRK-B"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-BRK-B"></div><div class="t-meta">Lower risk · steady</div>
+          <div class="t-price" id="p-BRK-B"><span class="shimmer"></span></div><div class="t-change" id="c-BRK-B"></div>
+          <div class="t-meta">Lower risk · steady</div>
         </div>
         <div class="mkt-tile" data-ticker="META" data-type="stock" onclick="pick(this)">
           <div class="t-ticker">META</div><div class="t-name">Meta · social + AI ads</div>
-          <div class="t-price" id="p-META"><span class="shimmer"></span></div>
-          <div class="t-change" id="c-META"></div><div class="t-meta">High growth · medium risk</div>
+          <div class="t-price" id="p-META"><span class="shimmer"></span></div><div class="t-change" id="c-META"></div>
+          <div class="t-meta">High growth · medium risk</div>
         </div>
       </div>
       <div class="verdict" id="verdict"></div>
@@ -898,7 +566,6 @@ footer {
     </div>
   </div>
 
-  <!-- SUMMARY -->
   <div class="card col-full">
     <div class="card-hd">
       <span class="card-hd-title">Monthly Summary</span>
@@ -930,31 +597,31 @@ footer {
     </div>
   </div>
 
-</div><!-- /grid -->
+</div>
 </div><!-- /panel-budget -->
 
-<!-- ══════════════════════════════════════════════════════ -->
-<!-- IOU TAB                                               -->
-<!-- ══════════════════════════════════════════════════════ -->
+<!-- ══════════ IOU TAB ══════════ -->
 <div class="tab-panel" id="panel-iou">
   <div class="iou-layout">
 
-    <!-- LEFT: groups + expenses -->
+    <!-- LEFT -->
     <div>
-      <div id="iou-groups-container"></div>
-      <button class="add-btn" style="margin-top:4px" onclick="addGroup()">+ Add payment group</button>
+      <div class="iou-section-label">Active Session</div>
+      <div class="iou-groups-wrap" id="iou-groups-container"></div>
+      <div style="margin-top:12px">
+        <button class="add-btn" onclick="addGroup()">+ Add payment group</button>
+      </div>
 
-      <!-- History -->
-      <div class="iou-history-card" style="margin-top:20px">
-        <div class="card-hd">
-          <span class="card-hd-title">Session History</span>
-          <span class="card-hd-total cm" id="history-count"></span>
+      <!-- History — visually separated -->
+      <div style="margin-top:32px">
+        <div class="iou-section-label">Session History <span id="history-count" style="color:var(--muted2)"></span></div>
+        <div class="iou-history-card">
+          <div id="iou-history-list"></div>
         </div>
-        <div id="iou-history-list"></div>
       </div>
     </div>
 
-    <!-- RIGHT: sidebar -->
+    <!-- RIGHT -->
     <div class="iou-sidebar">
       <div class="iou-balance-card">
         <div class="iou-balance-hd">Current Balance</div>
@@ -963,10 +630,9 @@ footer {
           <div class="iou-breakdown" id="iou-breakdown"></div>
         </div>
       </div>
-
       <div class="iou-actions">
         <button class="iou-action-btn primary" onclick="openExportModal()">Export &amp; close session</button>
-        <button class="iou-action-btn danger" onclick="addGroup()">+ New payment group</button>
+        <button class="iou-action-btn" onclick="addGroup()">+ New payment group</button>
       </div>
     </div>
 
@@ -981,9 +647,9 @@ footer {
 </div><!-- /page -->
 
 <script>
-// ════════════════════════════════════════════════════════
-// BUDGET — DATA & DEFAULTS
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
+// BUDGET — DEFAULTS & STATE
+// ════════════════════════════════════════════
 const DEFAULT_FIXED = [
   { name: 'Rent',               amt: 2000 },
   { name: 'Manulife Investment', amt: 500  },
@@ -999,11 +665,12 @@ const DEFAULT_SUBS = [
 ];
 const LIVE_LO = 800, LIVE_HI = 1200;
 const TICKERS = ['CSPX','QQQM','VOO','NVDA','AAPL','MSFT','TSLA','BRK-B','META'];
+
 const VERDICTS = {
-  CSPX:    {t:'etf',   v:`<strong>CSPX</strong> is the pick for a tax-conscious SG long-term investor. Ireland domicile cuts US dividend withholding from 30% to 15% at the fund level. Also sidesteps US estate tax exposure. Same S&P 500 as VOO, slightly higher TER (0.07%) but better net returns after tax for SG residents. Strong default for DCA rebuilding.`},
-  QQQM:    {t:'etf',   v:`<strong>QQQM</strong> tracks the Nasdaq-100 — same as QQQ but with a lower fee (0.15% vs 0.20%). Heavy tech concentration (~55%). Higher growth ceiling than S&P 500, higher volatility too. Good if you believe in the AI/tech story long-term.`},
-  VOO:     {t:'etf',   v:`<strong>VOO</strong> is the cheapest S&P 500 ETF (0.03% TER). Broad diversification across 500 companies, ~10% annualised historical returns. 30% US dividend WHT and US estate tax exposure apply — CSPX is structurally better for a long-term SG holder.`},
-  NVDA:    {t:'stock', v:`<strong>Nvidia</strong> dominates AI chip supply. Extraordinary recent growth, but valuations reflect that. High beta — big moves in both directions. Reasonable speculative slice via Syfe fractional shares, but not a core position.`},
+  CSPX:    {t:'etf',   v:`<strong>CSPX</strong> is the pick for a tax-conscious SG long-term investor. Ireland domicile cuts US dividend withholding from 30% to 15% at the fund level. Also sidesteps US estate tax exposure. Tracks the same S&P 500 as VOO, slightly higher TER (0.07%) but better net returns after tax for SG residents. Strong default for DCA rebuilding.`},
+  QQQM:    {t:'etf',   v:`<strong>QQQM</strong> tracks the Nasdaq-100 — same as QQQ but lower fee (0.15% vs 0.20%). Heavy tech concentration (~55%). Higher growth ceiling than S&P 500, higher volatility too. Good if you believe in the AI/tech story long-term.`},
+  VOO:     {t:'etf',   v:`<strong>VOO</strong> is the cheapest S&P 500 ETF (0.03% TER). Broad diversification, ~10% annualised historical returns. 30% US dividend WHT and estate tax exposure apply — CSPX is structurally better for a long-term SG holder.`},
+  NVDA:    {t:'stock', v:`<strong>Nvidia</strong> dominates AI chip supply. Extraordinary recent growth but valuations reflect that. High beta — big moves in both directions. Reasonable speculative slice via fractional shares, but not a core position.`},
   AAPL:    {t:'stock', v:`<strong>Apple</strong> is a reliable compounder — services revenue, loyal base, strong buybacks. Lower volatility. Already heavily weighted in any S&P 500 or Nasdaq ETF you hold, so buying directly adds concentration rather than diversification.`},
   MSFT:    {t:'stock', v:`<strong>Microsoft</strong> is defensive growth — Azure, Copilot/AI, enterprise. More stable than pure-play AI names. Also a major ETF holding. If you had to pick one stock to DCA into on a modest budget, this is among the more sensible choices.`},
   TSLA:    {t:'stock', v:`<strong>Tesla</strong> is high-volatility. Real tailwinds in EV and autonomy, but execution risk is high and sentiment swings are dramatic. Not the right pick when rebuilding financial stability. Keep any position very small.`},
@@ -1019,9 +686,9 @@ function saveBudget() {
   localStorage.setItem('budget-subs',  JSON.stringify(subsItems));
 }
 
-// ════════════════════════════════════════════════════════
-// BUDGET — RENDER
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
+// BUDGET — RENDER EDITABLE LISTS
+// ════════════════════════════════════════════
 function renderList(items, containerId, dotCls, tagCls, tagTxt) {
   const el = document.getElementById(containerId);
   el.innerHTML = '';
@@ -1030,9 +697,9 @@ function renderList(items, containerId, dotCls, tagCls, tagTxt) {
     row.className = 'li';
     row.innerHTML = `
       <div class="li-dot ${dotCls}"></div>
-      <input class="li-edit-name" value="${escHtml(item.name)}" placeholder="Label">
+      <input class="li-edit-name" value="${esc(item.name)}" placeholder="Label">
       <span class="tag ${tagCls}">${tagTxt}</span>
-      <span style="color:var(--muted);font-size:11px;flex-shrink:0">$</span>
+      <span style="color:var(--muted);font-size:12px;flex-shrink:0">$</span>
       <input class="li-edit-amt" type="number" value="${item.amt}" min="0">
       <button class="del-btn" title="Remove">×</button>
     `;
@@ -1049,14 +716,14 @@ function addRow(type) {
   budgetUpdate();
 }
 
-function renderAll() {
+function renderAllBudget() {
   renderList(fixedItems,'fixed-list','dr','tr','Fixed');
   renderList(subsItems,'subs-list','da','ta','Recurring');
 }
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // BUDGET — UPDATE SUMMARY
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 function budgetUpdate() {
   const salary  = parseFloat(document.getElementById('salary-input').value)||0;
   const fixedT  = fixedItems.reduce((s,i)=>s+i.amt,0);
@@ -1086,34 +753,29 @@ function budgetUpdate() {
   rEl.textContent = `$${rem.toLocaleString()}`;
   rEl.className = `r-amt ${cls}`;
 
-  const bufLo=rem-LIVE_LO, bufHi=rem-LIVE_HI;
+  const bufLo = rem-LIVE_LO, bufHi = rem-LIVE_HI;
   const subTxt = rem<LIVE_LO ? '⚠ Below minimum living estimate' : `$${bufLo.toLocaleString()}–$${bufHi.toLocaleString()} buffer above living costs`;
   document.getElementById('r-sub').textContent = subTxt;
 
-  // sticky
-  const sbAmt = document.getElementById('sb-amt');
-  sbAmt.textContent = `$${rem.toLocaleString()}`;
-  sbAmt.className = `sb-amt ${cls}`;
+  document.getElementById('sb-amt').textContent = `$${rem.toLocaleString()}`;
+  document.getElementById('sb-amt').className = `sb-amt ${cls}`;
   document.getElementById('sb-sub').textContent = subTxt;
 }
 
-// ════════════════════════════════════════════════════════
-// STICKY BAR (budget tab only)
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
+// STICKY BAR
+// ════════════════════════════════════════════
 const stickyBar = document.getElementById('sticky-bar');
-const remBlock  = document.getElementById('remaining-block');
-
 const stickyObs = new IntersectionObserver(([entry]) => {
-  // only show sticky when on budget tab
   const onBudget = document.getElementById('panel-budget').classList.contains('active');
   stickyBar.classList.toggle('show', !entry.isIntersecting && onBudget);
 }, { threshold: 0.5 });
 
-window.addEventListener('DOMContentLoaded', () => stickyObs.observe(remBlock));
+window.addEventListener('DOMContentLoaded', () => stickyObs.observe(document.getElementById('remaining-block')));
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // MARKET DATA
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 async function fetchPrices() {
   const btn = document.getElementById('refresh-btn');
   btn.classList.add('loading'); btn.textContent = '↻ Loading…';
@@ -1135,22 +797,21 @@ async function fetchOne(ticker) {
     if (!m?.regularMarketPrice) throw new Error();
     const price=m.regularMarketPrice, prev=m.chartPreviousClose||m.previousClose;
     const change=price-prev, pct=(change/prev)*100;
-    const cur=m.currency||'USD';
-    const sym=cur==='GBp'?'GBp ':cur==='GBP'?'£':'$';
+    const cur=m.currency||'USD', sym=cur==='GBp'?'GBp ':cur==='GBP'?'£':'$';
     const disp=cur==='GBp'?(price/100).toFixed(2):price.toFixed(2);
     if(pEl) pEl.textContent=`${sym}${Number(disp).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-    if(cEl){ const s=change>=0?'+':''; const cls=change>0?'pos':change<0?'neg':'neu'; cEl.innerHTML=`<span class="${cls}">${s}${change.toFixed(2)} (${s}${pct.toFixed(2)}%)</span>`; }
+    if(cEl){const s=change>=0?'+':'';const cls=change>0?'pos':change<0?'neg':'neu';cEl.innerHTML=`<span class="${cls}">${s}${change.toFixed(2)} (${s}${pct.toFixed(2)}%)</span>`;}
   } catch {
-    if(pEl) pEl.innerHTML=`<span class="neu" style="font-size:10px">—</span>`;
-    if(cEl) cEl.innerHTML=`<span class="neu" style="font-size:9px">unavailable</span>`;
+    if(pEl) pEl.innerHTML=`<span class="neu" style="font-size:11px">—</span>`;
+    if(cEl) cEl.innerHTML=`<span class="neu" style="font-size:10px">unavailable</span>`;
   }
 }
 
 function switchMktTab(btn, tab) {
   document.querySelectorAll('.mkt-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('tab-etf').style.display    = tab==='etf'    ? 'grid':'none';
-  document.getElementById('tab-stocks').style.display = tab==='stocks' ? 'grid':'none';
+  document.getElementById('tab-etf').style.display    = tab==='etf'    ?'grid':'none';
+  document.getElementById('tab-stocks').style.display = tab==='stocks' ?'grid':'none';
   document.querySelectorAll('.mkt-tile').forEach(t=>t.classList.remove('selected'));
   document.getElementById('verdict').classList.remove('visible');
   document.getElementById('mkt-lbl').textContent = 'Select an ETF or stock to explore';
@@ -1167,27 +828,22 @@ function pick(el) {
   document.getElementById('mkt-lbl').textContent=`${tk} selected`;
 }
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // MAIN TAB SWITCH
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 function switchMainTab(btn, tab) {
   document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.getElementById(`panel-${tab}`).classList.add('active');
-
-  // hide sticky on IOU tab
   stickyBar.classList.remove('show');
-
-  // hide salary area on IOU tab
-  document.getElementById('salary-area').style.visibility = tab==='budget' ? 'visible' : 'hidden';
-
+  document.getElementById('salary-area').style.visibility = tab==='budget'?'visible':'hidden';
   if(tab==='iou') renderIOU();
 }
 
-// ════════════════════════════════════════════════════════
-// IOU — DATA
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
+// IOU — STATE
+// ════════════════════════════════════════════
 let iouGroups  = JSON.parse(localStorage.getItem('iou-groups')  || 'null') || [];
 let iouHistory = JSON.parse(localStorage.getItem('iou-history') || '[]');
 
@@ -1198,11 +854,11 @@ function saveIOU() {
 
 function addGroup() {
   iouGroups.push({ id: Date.now(), name: 'Payment group', expenses: [] });
-  saveIOU();
-  renderIOU();
+  saveIOU(); renderIOU();
 }
 
 function deleteGroup(gid) {
+  if (!confirm('Delete this group and all its expenses?')) return;
   iouGroups = iouGroups.filter(g=>g.id!==gid);
   saveIOU(); renderIOU();
 }
@@ -1221,22 +877,19 @@ function deleteExpense(gid, eid) {
   saveIOU(); renderIOU();
 }
 
-// ════════════════════════════════════════════════════════
-// IOU — CALCULATE BALANCE
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
+// IOU — BALANCE CALC
+// ════════════════════════════════════════════
 function calcBalance() {
-  // Returns { alfOwes, sheryOwes } running totals
   let alfOwes=0, sheryOwes=0;
   iouGroups.forEach(g=>{
     g.expenses.forEach(e=>{
       const amt = parseFloat(e.amt)||0;
       if(e.split==='halved') {
-        const half = amt/2;
-        if(e.paidBy==='Shery') alfOwes   += half;
-        else                    sheryOwes += half;
+        if(e.paidBy==='Shery') alfOwes   += amt/2;
+        else                    sheryOwes += amt/2;
       } else if(e.split==='alf100') {
-        // Alf pays 100% — Shery owes nothing extra, Alf covers it
-        if(e.paidBy==='Shery') alfOwes += amt; // Shery paid but it's Alf's 100%
+        if(e.paidBy==='Shery') alfOwes += amt;
       } else if(e.split==='shery100') {
         if(e.paidBy==='Alf') sheryOwes += amt;
       }
@@ -1245,15 +898,16 @@ function calcBalance() {
   return { alfOwes, sheryOwes };
 }
 
-// ════════════════════════════════════════════════════════
-// IOU — RENDER
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
+// IOU — RENDER (full rebuild only when structure changes)
+// Amount inputs use 'change'/'blur' not 'input' to avoid re-render on each keystroke
+// ════════════════════════════════════════════
 function renderIOU() {
   const container = document.getElementById('iou-groups-container');
   container.innerHTML = '';
 
   if(iouGroups.length===0) {
-    container.innerHTML = `<div class="empty-state">No groups yet.<br>Add a payment group to start tracking.</div>`;
+    container.innerHTML = `<div class="empty-state">No groups yet.<br>Add a payment group to start logging expenses.</div>`;
   }
 
   iouGroups.forEach(g => {
@@ -1262,68 +916,81 @@ function renderIOU() {
     block.className = 'iou-group';
     block.innerHTML = `
       <div class="iou-group-hd">
-        <input class="iou-group-name" value="${escHtml(g.name)}" placeholder="Group name (e.g. Amex)">
+        <input class="iou-group-name" value="${esc(g.name)}" placeholder="Group name (e.g. Amex)">
         <span class="iou-group-total">$${groupTotal.toFixed(2)}</span>
         <button class="iou-group-del" title="Delete group">×</button>
       </div>
       <div class="iou-col-hd">
-        <span>Description</span><span style="text-align:right">Amount</span><span>Split</span><span>Paid by</span><span></span>
+        <span>Description</span>
+        <span style="text-align:right">Amount</span>
+        <span>Split</span>
+        <span>Paid by</span>
+        <span></span>
       </div>
       <div class="iou-expenses-list" id="exp-${g.id}"></div>
       <div class="iou-add-row">
-        <button class="add-btn" data-gid="${g.id}">+ Add expense</button>
+        <button class="add-btn">+ Add expense</button>
       </div>
     `;
 
-    block.querySelector('.iou-group-name').addEventListener('input', e => {
-      g.name = e.target.value; saveIOU();
-    });
+    block.querySelector('.iou-group-name').addEventListener('input', e => { g.name=e.target.value; saveIOU(); });
     block.querySelector('.iou-group-del').addEventListener('click', () => deleteGroup(g.id));
     block.querySelector('.add-btn').addEventListener('click', () => addExpense(g.id));
 
     container.appendChild(block);
 
-    // render expenses
+    // render expense rows
     const expList = document.getElementById(`exp-${g.id}`);
     if(g.expenses.length===0) {
-      expList.innerHTML = `<div class="empty-state" style="padding:14px 16px">No expenses yet.</div>`;
+      expList.innerHTML = `<div class="empty-state" style="padding:12px 16px;text-align:left">No expenses yet.</div>`;
     }
+
     g.expenses.forEach(e => {
       const row = document.createElement('div');
       row.className = 'iou-row';
-
-      // calculate owed display
-      const amt = parseFloat(e.amt)||0;
-      let alfO=0, sheryO=0;
-      if(e.split==='halved')   { alfO=amt/2; sheryO=amt/2; }
-      else if(e.split==='alf100')   { if(e.paidBy==='Shery') alfO=amt; }
-      else if(e.split==='shery100') { if(e.paidBy==='Alf') sheryO=amt; }
-
-      const owedStr = e.split==='halved'
-        ? `$${(amt/2).toFixed(2)} ea`
-        : (e.paidBy==='Alf' && e.split==='shery100') ? `Shery $${amt.toFixed(2)}`
-        : (e.paidBy==='Shery' && e.split==='alf100') ? `Alf $${amt.toFixed(2)}`
-        : '—';
-
       row.innerHTML = `
-        <input class="iou-input" value="${escHtml(e.desc)}" placeholder="Description">
+        <input class="iou-input desc-in" value="${esc(e.desc)}" placeholder="Description">
         <input class="iou-input amt" type="number" value="${e.amt||''}" min="0" step="0.01" placeholder="0.00">
-        <select class="iou-split-select">
+        <select class="iou-select split-in">
           <option value="halved"   ${e.split==='halved'   ?'selected':''}>Halved</option>
           <option value="alf100"   ${e.split==='alf100'   ?'selected':''}>Alf 100%</option>
           <option value="shery100" ${e.split==='shery100' ?'selected':''}>Shery 100%</option>
         </select>
-        <select class="iou-split-select">
+        <select class="iou-select paidby-in">
           <option value="Alf"   ${e.paidBy==='Alf'   ?'selected':''}>Alf</option>
           <option value="Shery" ${e.paidBy==='Shery' ?'selected':''}>Shery</option>
         </select>
-        <button class="iou-row-del">×</button>
+        <button class="iou-row-del" title="Remove">×</button>
       `;
 
-      row.querySelector('.iou-input').addEventListener('input', ev => { e.desc=ev.target.value; saveIOU(); updateBalance(); });
-      row.querySelector('.iou-input.amt').addEventListener('input', ev => { e.amt=parseFloat(ev.target.value)||0; saveIOU(); renderIOU(); });
-      row.querySelectorAll('.iou-split-select')[0].addEventListener('change', ev => { e.split=ev.target.value; saveIOU(); renderIOU(); });
-      row.querySelectorAll('.iou-split-select')[1].addEventListener('change', ev => { e.paidBy=ev.target.value; saveIOU(); renderIOU(); });
+      // Description: update data on input, NO re-render
+      row.querySelector('.desc-in').addEventListener('input', ev => {
+        e.desc = ev.target.value; saveIOU(); updateBalance();
+      });
+
+      // Amount: update data on blur/change only — avoids focus-stealing on every keystroke
+      const amtIn = row.querySelector('.iou-input.amt');
+      amtIn.addEventListener('change', ev => {
+        e.amt = parseFloat(ev.target.value)||0; saveIOU();
+        // update just the group total label, not full re-render
+        const totalEl = block.querySelector('.iou-group-total');
+        const gt = g.expenses.reduce((s,ex)=>s+(parseFloat(ex.amt)||0),0);
+        totalEl.textContent = `$${gt.toFixed(2)}`;
+        updateBalance();
+      });
+      // Also update on blur so tabbing away commits the value
+      amtIn.addEventListener('blur', ev => {
+        e.amt = parseFloat(ev.target.value)||0; saveIOU();
+        const totalEl = block.querySelector('.iou-group-total');
+        const gt = g.expenses.reduce((s,ex)=>s+(parseFloat(ex.amt)||0),0);
+        totalEl.textContent = `$${gt.toFixed(2)}`;
+        updateBalance();
+      });
+
+      // Dropdowns: update + re-render (they're clicks, not typing)
+      row.querySelector('.split-in').addEventListener('change', ev => { e.split=ev.target.value; saveIOU(); updateBalance(); });
+      row.querySelector('.paidby-in').addEventListener('change', ev => { e.paidBy=ev.target.value; saveIOU(); updateBalance(); });
+
       row.querySelector('.iou-row-del').addEventListener('click', () => deleteExpense(g.id, e.id));
 
       expList.appendChild(row);
@@ -1334,21 +1001,24 @@ function renderIOU() {
   renderHistory();
 }
 
+// ════════════════════════════════════════════
+// IOU — UPDATE BALANCE (no DOM rebuild)
+// ════════════════════════════════════════════
 function updateBalance() {
   const { alfOwes, sheryOwes } = calcBalance();
-  const net = alfOwes - sheryOwes; // positive = Alf owes Shery, negative = Shery owes Alf
-  const verdictEl = document.getElementById('iou-verdict-text');
+  const net = alfOwes - sheryOwes;
+  const verdictEl   = document.getElementById('iou-verdict-text');
   const breakdownEl = document.getElementById('iou-breakdown');
 
   if(alfOwes===0 && sheryOwes===0) {
-    verdictEl.innerHTML = `Add expenses to see who owes what.`;
+    verdictEl.innerHTML = `Add expenses to see<br>who owes what.`;
     breakdownEl.innerHTML = '';
     return;
   }
 
-  if(Math.abs(net) < 0.01) {
+  if(Math.abs(net)<0.01) {
     verdictEl.innerHTML = `All <em>square.</em><strong style="color:var(--accent)">$0.00</strong>`;
-  } else if(net > 0) {
+  } else if(net>0) {
     verdictEl.innerHTML = `Alf owes <em>Shery</em><strong class="cr">$${net.toFixed(2)}</strong>`;
   } else {
     verdictEl.innerHTML = `Shery owes <em>Alf</em><strong class="cg">$${Math.abs(net).toFixed(2)}</strong>`;
@@ -1357,28 +1027,31 @@ function updateBalance() {
   breakdownEl.innerHTML = `
     <div class="iou-bk-row"><span>Alf owes (total)</span><span class="cr">$${alfOwes.toFixed(2)}</span></div>
     <div class="iou-bk-row"><span>Shery owes (total)</span><span class="cg">$${sheryOwes.toFixed(2)}</span></div>
-    <div class="iou-bk-row"><span>Net</span><span>${net>=0?'Alf pays':'Shery pays'} $${Math.abs(net).toFixed(2)}</span></div>
+    <div class="iou-bk-row"><span>Net settlement</span><span>${net>=0?'Alf pays':'Shery pays'} $${Math.abs(net).toFixed(2)}</span></div>
   `;
 }
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // IOU — HISTORY
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 function renderHistory() {
   const el = document.getElementById('iou-history-list');
-  document.getElementById('history-count').textContent = iouHistory.length ? `${iouHistory.length} sessions` : '';
+  const countEl = document.getElementById('history-count');
+  countEl.textContent = iouHistory.length ? `· ${iouHistory.length} session${iouHistory.length!==1?'s':''}` : '';
 
   if(!iouHistory.length) {
-    el.innerHTML = `<div class="empty-state">No sessions saved yet.<br>Use "Export &amp; close session" to archive.</div>`;
+    el.innerHTML=`<div class="empty-state">No past sessions yet.</div>`;
     return;
   }
 
-  el.innerHTML = '';
-  [...iouHistory].reverse().forEach(h => {
+  el.innerHTML='';
+  [...iouHistory].reverse().forEach(h=>{
+    const net = h.alfOwes - h.sheryOwes;
+    const netStr = Math.abs(net)<0.01 ? 'All square'
+      : net>0 ? `Alf paid $${net.toFixed(2)}`
+      : `Shery paid $${Math.abs(net).toFixed(2)}`;
     const row = document.createElement('div');
     row.className = 'iou-hist-row';
-    const net = h.alfOwes - h.sheryOwes;
-    const netStr = Math.abs(net)<0.01 ? 'All square' : net>0 ? `Alf paid $${net.toFixed(2)}` : `Shery paid $${Math.abs(net).toFixed(2)}`;
     row.innerHTML = `
       <span class="iou-hist-date">${h.date}</span>
       <span class="iou-hist-desc">${h.label}</span>
@@ -1388,92 +1061,79 @@ function renderHistory() {
   });
 }
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // IOU — EXPORT / WIPE
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 function buildExportText() {
   const { alfOwes, sheryOwes } = calcBalance();
   const net = alfOwes - sheryOwes;
-  const now = new Date().toLocaleDateString('en-SG', {day:'numeric',month:'short',year:'numeric'});
-  let lines = [`IOU Session — ${now}`, `${'─'.repeat(36)}`];
+  const now = new Date().toLocaleDateString('en-SG',{day:'numeric',month:'short',year:'numeric'});
+  let lines = [`IOU Session — ${now}`, '─'.repeat(36)];
 
-  iouGroups.forEach(g => {
+  iouGroups.forEach(g=>{
     lines.push(`\n${g.name}`);
-    g.expenses.forEach(e => {
+    g.expenses.forEach(e=>{
       const amt = parseFloat(e.amt)||0;
-      const splitLabel = e.split==='halved' ? 'Halved' : e.split==='alf100' ? 'Alf 100%' : 'Shery 100%';
+      const splitLabel = e.split==='halved'?'Halved':e.split==='alf100'?'Alf 100%':'Shery 100%';
       lines.push(`  ${e.desc||'—'}  $${amt.toFixed(2)}  ${splitLabel}  (paid: ${e.paidBy})`);
     });
     const gt = g.expenses.reduce((s,e)=>s+(parseFloat(e.amt)||0),0);
-    lines.push(`  Group total: $${gt.toFixed(2)}`);
+    lines.push(`  Subtotal: $${gt.toFixed(2)}`);
   });
 
   lines.push(`\n${'─'.repeat(36)}`);
   lines.push(`Alf owes:   $${alfOwes.toFixed(2)}`);
   lines.push(`Shery owes: $${sheryOwes.toFixed(2)}`);
-  lines.push(net>0.01 ? `→ Alf pays Shery $${net.toFixed(2)}` : net<-0.01 ? `→ Shery pays Alf $${Math.abs(net).toFixed(2)}` : `→ All square`);
+  lines.push(net>0.01?`→ Alf pays Shery $${net.toFixed(2)}`:net<-0.01?`→ Shery pays Alf $${Math.abs(net).toFixed(2)}`:'→ All square');
   return lines.join('\n');
 }
 
 function openExportModal() {
-  if(iouGroups.every(g=>g.expenses.length===0) && iouGroups.length===0) {
-    alert('Nothing to export — add some expenses first.'); return;
-  }
+  const total = iouGroups.reduce((s,g)=>s+g.expenses.length,0);
+  if(iouGroups.length===0||total===0){ alert('Nothing to export — add some expenses first.'); return; }
   document.getElementById('modal-export-text').textContent = buildExportText();
   document.getElementById('modal-overlay').classList.add('open');
 }
 
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-}
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
 
 function copyExport() {
-  const txt = document.getElementById('modal-export-text').textContent;
-  navigator.clipboard.writeText(txt).then(() => {
-    const btn = document.querySelector('.modal-btn:not(.confirm):not(:last-child)');
-    btn.textContent = 'Copied!';
-    setTimeout(()=>btn.textContent='Copy text', 1500);
+  navigator.clipboard.writeText(document.getElementById('modal-export-text').textContent).then(()=>{
+    const btn=document.querySelector('.modal-btn:not(.confirm):not(:last-child)');
+    btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy text',1600);
   });
 }
 
 function confirmWipe() {
   const { alfOwes, sheryOwes } = calcBalance();
-  const net = alfOwes - sheryOwes;
-  const now = new Date().toLocaleDateString('en-SG', {day:'numeric',month:'short',year:'numeric'});
-  const totalExpenses = iouGroups.reduce((s,g)=>s+g.expenses.length,0);
-  const label = `${iouGroups.length} group${iouGroups.length!==1?'s':''}, ${totalExpenses} expense${totalExpenses!==1?'s':''}`;
-
-  iouHistory.push({ date: now, label, alfOwes, sheryOwes });
+  const now = new Date().toLocaleDateString('en-SG',{day:'numeric',month:'short',year:'numeric'});
+  const totalExp = iouGroups.reduce((s,g)=>s+g.expenses.length,0);
+  const label = `${iouGroups.length} group${iouGroups.length!==1?'s':''}, ${totalExp} expense${totalExp!==1?'s':''}`;
+  iouHistory.push({ date:now, label, alfOwes, sheryOwes });
   iouGroups = [];
-  saveIOU();
-  closeModal();
-  renderIOU();
+  saveIOU(); closeModal(); renderIOU();
 }
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // UTILS
-// ════════════════════════════════════════════════════════
-function escHtml(str) {
-  return (str||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+// ════════════════════════════════════════════
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // EVENTS
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 document.getElementById('salary-input').addEventListener('input', budgetUpdate);
 document.getElementById('syfe-tog').addEventListener('change', budgetUpdate);
 document.getElementById('syfe-amt').addEventListener('input', budgetUpdate);
-document.getElementById('modal-overlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+document.getElementById('modal-overlay').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeModal(); });
 
-// ════════════════════════════════════════════════════════
+// ════════════════════════════════════════════
 // INIT
-// ════════════════════════════════════════════════════════
-renderAll();
+// ════════════════════════════════════════════
+renderAllBudget();
 budgetUpdate();
 fetchPrices();
-// pre-load IOU so history count shows on first visit
 renderHistory();
-document.getElementById('history-count').textContent = iouHistory.length ? `${iouHistory.length} sessions` : '';
 </script>
 </body>
 </html>
