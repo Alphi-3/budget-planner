@@ -251,7 +251,7 @@ input:checked + .sw-track:before { background: var(--bg); transform: translateX(
 .last-upd { font-size: 10px; color: var(--muted2); margin-top: 10px; text-align: right; }
 
 /* ── IOU LAYOUT ───────────────────────────────────────── */
-.iou-layout { display: grid; grid-template-columns: 1fr 340px; gap: 16px; align-items: start; }
+.iou-layout { display: grid; grid-template-columns: 1fr 340px; gap: 14px; align-items: start; }
 @media (max-width: 820px) { .iou-layout { grid-template-columns: 1fr; } }
 
 /* ── IOU GROUP ────────────────────────────────────────── */
@@ -481,6 +481,8 @@ input:checked + .sw-track:before { background: var(--bg); transform: translateX(
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 10px; overflow: hidden; margin-top: 14px;
 }
+.iou-scanner-body { display: none; }
+.iou-scanner-body.open { display: block; }
 
 .iou-min-amt-row {
   display: flex; align-items: center; gap: 10px; padding: 10px 16px;
@@ -777,7 +779,6 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--border
     </div>
   </div>
 
-</div>
 </div><!-- /panel-budget -->
 
 <!-- ══════════ IOU TAB ══════════ -->
@@ -804,41 +805,46 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--border
       <div style="margin-top:32px">
         <div class="iou-section-label">Import from Statement</div>
         <div class="iou-scanner-panel">
-          <div class="card-hd">
-            <span class="card-hd-title">Bank Statement Import</span>
-            <span class="scanner-hd-badge">AI-powered</span>
+          <div class="scanner-hd" onclick="toggleIOUScanner()">
+            <div class="scanner-hd-left">
+              <span class="scanner-hd-title">Bank Statement Import</span>
+              <span class="scanner-hd-badge">AI-powered</span>
+            </div>
+            <span class="scanner-chevron" id="iou-scanner-chevron">▼</span>
           </div>
-          <div style="padding:16px">
-            <p class="scanner-intro" style="margin-bottom:14px">Upload your DBS statement. Claude will extract transactions above your minimum amount threshold. Select the ones shared with Shery and add them directly to a group.</p>
+          <div class="iou-scanner-body" id="iou-scanner-body">
+            <div style="padding:16px">
+              <p class="scanner-intro" style="margin-bottom:14px">Upload your DBS statement. Claude will extract transactions above your minimum amount threshold. Select the ones shared with Shery and add them directly to a group.</p>
 
-            <div class="upload-zone" id="iou-upload-zone" onclick="document.getElementById('iou-pdf-input').click()">
-              <input type="file" id="iou-pdf-input" accept=".pdf">
-              <div class="upload-icon">📄</div>
-              <div class="upload-label"><strong>Click to upload</strong> or drag and drop<br>DBS statement PDF</div>
-              <div class="upload-filename" id="iou-upload-name"></div>
+              <div class="upload-zone" id="iou-upload-zone" onclick="document.getElementById('iou-pdf-input').click()">
+                <input type="file" id="iou-pdf-input" accept=".pdf">
+                <div class="upload-icon">📄</div>
+                <div class="upload-label"><strong>Click to upload</strong> or drag and drop<br>DBS statement PDF</div>
+                <div class="upload-filename" id="iou-upload-name"></div>
+              </div>
+
+              <div class="iou-min-amt-row">
+                <label>Minimum amount</label>
+                <input type="number" id="iou-min-amt" value="20" min="0" step="5">
+                <span style="font-size:11px;color:var(--muted)">SGD — filters out small transactions</span>
+              </div>
+
+              <div class="scanner-controls" style="margin-top:12px">
+                <button class="scan-btn" id="iou-scan-btn" onclick="runIOUScan()" disabled>Scan &amp; extract transactions</button>
+                <span class="scan-status" id="iou-scan-status"></span>
+              </div>
             </div>
 
-            <div class="iou-min-amt-row">
-              <label>Minimum amount</label>
-              <input type="number" id="iou-min-amt" value="20" min="0" step="5">
-              <span style="font-size:11px;color:var(--muted)">SGD — filters out small transactions</span>
-            </div>
-
-            <div class="scanner-controls" style="margin-top:12px">
-              <button class="scan-btn" id="iou-scan-btn" onclick="runIOUScan()" disabled>Scan &amp; extract transactions</button>
-              <span class="scan-status" id="iou-scan-status"></span>
-            </div>
-          </div>
-
-          <div id="iou-scan-results" style="display:none">
-            <div style="padding:0 16px 10px">
-              <span style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)">Select transactions to add</span>
-            </div>
-            <div id="iou-scan-items"></div>
-            <div style="padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-              <span style="font-size:11px;color:var(--muted)">Add to group:</span>
-              <select class="iou-group-select" id="iou-target-group"></select>
-              <button class="iou-add-selected-btn" id="iou-add-btn" onclick="addSelectedIOUItems()" disabled style="width:auto;flex:1">Add selected to group</button>
+            <div id="iou-scan-results" style="display:none">
+              <div style="padding:0 16px 10px">
+                <span style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)">Select transactions to add</span>
+              </div>
+              <div id="iou-scan-items"></div>
+              <div style="padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <span style="font-size:11px;color:var(--muted)">Add to group:</span>
+                <select class="iou-group-select" id="iou-target-group"></select>
+                <button class="iou-add-selected-btn" id="iou-add-btn" onclick="addSelectedIOUItems()" disabled style="width:auto;flex:1">Add selected to group</button>
+              </div>
             </div>
           </div>
         </div>
@@ -847,6 +853,7 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--border
 
     <!-- RIGHT -->
     <div class="iou-sidebar">
+      <div class="iou-section-label" style="visibility:hidden" aria-hidden="true">Active Session</div>
       <div class="iou-balance-card">
         <div class="iou-balance-hd">Current Balance</div>
         <div class="iou-balance-body">
@@ -1409,6 +1416,13 @@ let budgetScanData = [];
 function toggleScanner() {
   const body    = document.getElementById('scanner-body');
   const chevron = document.getElementById('scanner-chevron');
+  const open    = body.classList.toggle('open');
+  chevron.classList.toggle('open', open);
+}
+
+function toggleIOUScanner() {
+  const body    = document.getElementById('iou-scanner-body');
+  const chevron = document.getElementById('iou-scanner-chevron');
   const open    = body.classList.toggle('open');
   chevron.classList.toggle('open', open);
 }
